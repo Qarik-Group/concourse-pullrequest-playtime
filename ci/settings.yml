@@ -1,7 +1,6 @@
 ---
 meta:
   name:    concourse-pullrequest-playtime
-  release: concourse-pullrequest-playtime
   target:  sw
   url:     https://ci.starkandwayne.com
 
