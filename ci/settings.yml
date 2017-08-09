@@ -1,0 +1,15 @@
+---
+meta:
+  name:    concourse-pullrequest-playtime
+  release: concourse-pullrequest-playtime
+  target:  sw
+  url:     https://ci.starkandwayne.com
+
+  initial_version: 0.1.0
+
+  github:
+    owner:  starkandwayne
+    repo:   concourse-pullrequest-playtime
+    branch: master
+    private_key:  (( vault "secret/pipelines/shield-boshrelease/github:private" ))
+    access_token: (( vault "secret/pipelines/shield-boshrelease/github:token" ))
