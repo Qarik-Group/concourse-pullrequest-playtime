@@ -36,3 +36,7 @@ A successful PR:
 * Successful `test-pr` job updates PR
 
     ![successful-pr](https://cl.ly/0B341N1l280A/download/successful-pr.png)
+
+Pending status:
+
+![pending-pr](https://cl.ly/2c2f050q3u3R/download/pending-pr.png)
