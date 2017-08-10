@@ -44,6 +44,10 @@ jobs:
     plan:
       - { get: git }
       - { get: git-pull-requests, trigger: true, version: every }
+      - put: git-pull-requests
+        params:
+          path: git-pull-requests
+          status: pending
       - task: test-pr
         config:
           platform: linux
