@@ -19,6 +19,7 @@ groups:
   - name: (( grab meta.pipeline ))
     jobs:
       - test-master
+      - test-pr
 
 jobs:
   - name: test-master
@@ -38,6 +39,35 @@ jobs:
             path: ./git/test.sh
             args: []
 
+  - name: test-pr
+    public: true
+    plan:
+      - { get: git }
+      - { get: git-pull-requests, trigger: true, version: every }
+      - task: test-pr
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: (( grab meta.image ))
+          inputs:
+            - { name: git }
+            - { name: git-pull-requests }
+          run:
+            path: ./git-pull-requests/test.sh
+            args: []
+        on_success:
+          put: git-pull-requests
+          params:
+            path: git-pull-requests
+            status: success
+        on_failure:
+          put: git-pull-requests
+          params:
+            path: git-pull-requests
+            status: failure
+
 resource_types:
   - name: pull-request
     type: docker-image
@@ -51,3 +81,11 @@ resources:
       uri:         (( grab meta.github.uri ))
       branch:      (( grab meta.github.branch ))
       private_key: (( grab meta.github.private_key ))
+
+  - name: git-pull-requests
+    type: pull-request
+    source:
+      access_token: (( grab meta.github.access_token ))
+      private_key:  (( grab meta.github.private_key ))
+      repo:         (( concat meta.github.owner "/" meta.github.repo ))
+      base:         (( grab meta.github.branch ))
