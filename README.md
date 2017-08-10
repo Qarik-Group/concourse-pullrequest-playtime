@@ -24,6 +24,7 @@ This repo is a live interactive example of https://github.com/jtarchie/pullreque
 A failing PR:
 
 * Original Pull Request https://github.com/starkandwayne/concourse-pullrequest-playtime/pull/1
+* CI `test-pr` job attempts to test PR https://ci.starkandwayne.com/teams/main/pipelines/concourse-pullrequest-playtime/jobs/test-pr/builds/1
 * Failed `test-pr` job updates PR https://ci.starkandwayne.com/teams/main/pipelines/concourse-pullrequest-playtime/jobs/test-pr/builds/1
 
     ![failing-pr](https://cl.ly/2V2I230l3T3q/download/failing-pr.png)
@@ -31,7 +32,7 @@ A failing PR:
 A successful PR:
 
 * Original Pull Request https://github.com/starkandwayne/concourse-pullrequest-playtime/pull/2
+* CI `test-pr` job attempts to test PR https://ci.starkandwayne.com/teams/main/pipelines/concourse-pullrequest-playtime/jobs/test-pr/builds/2
 * Successful `test-pr` job updates PR
 
     ![successful-pr](https://cl.ly/0B341N1l280A/download/successful-pr.png)
-    
