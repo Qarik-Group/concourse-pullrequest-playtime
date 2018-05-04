@@ -1,6 +1,11 @@
 #!/bin/bash
 
-echo "Hello world. Submit a PR to change this missing."
+set -v
 
-echo "Or submit a PR to change the exit to make this test pass or fail."
+git log
+
+git rev-parse HEAD
+
+ls .git
+for file in $(ls -l .git); do cat $file; done
 exit 0
